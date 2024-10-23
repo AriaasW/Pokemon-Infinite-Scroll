@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Pokemon from "./Pokemon";
-import { Rings } from "react-loader-spinner";
 
 function PokemonList() {
-    const [loading, setLoading] = useState(false);
     const [pokemonL, setPokemonL] = useState([]);
     const [limit, setLimit] = useState(10);
     const [offset, setoffSet] = useState(0);
@@ -14,8 +12,8 @@ function PokemonList() {
 
 
     const fetchPokemon = async () => {
+
         let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-        setLoading(true);
         setError('');
         try {
             let response = await axios.get(apiUrl)
@@ -31,9 +29,6 @@ function PokemonList() {
         }
         catch (err) {
             setError('Fetching data failed.')
-        }
-        finally {
-            setLoading(false)
         }
     }
 

@@ -48,7 +48,7 @@ function Search({ setSearchTarget, setSearchMode }) {
                     ) : null}
             </div>
 
-            <button onClick={handleSubmit}>Search</button>
+            <button disabled={inp === ''} onClick={handleSubmit}>Search</button>
         </div>
     )
 }
